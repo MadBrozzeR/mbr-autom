@@ -1,0 +1,19 @@
+{
+  "name": "mbr-autom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MadBrozzeR/mbr-autom.git"
+  },
+  "author": "MadBrozzeR",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MadBrozzeR/mbr-autom/issues"
+  },
+  "homepage": "https://github.com/MadBrozzeR/mbr-autom#readme"
+}
