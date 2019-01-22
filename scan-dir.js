@@ -17,14 +17,28 @@ File.prototype.write = function (data) {
 File.prototype.getAbsolutePath = function (callback) {
     fs.realpath(this.fullname, callback);
 };
-File.prototype.replace = function (regexp, replacer) {
+File.prototype.replace = function () {
     const file = this;
+    let regexp;
+    let replacer;
+    let index = 0;
     file.read(function (error, data) {
         if (error) {
             return;
         }
+        let result = data.toString();
 
-        let result = data.toString().replace(regexp, replacer);
+        do {
+            regexp = arguments[index];
+            replacer = arguments[index + 1];
+
+            if (regexp && replacer) {
+                result = result.replace(regexp, replacer);
+            }
+
+            index += 2;
+        } while (index < arguments.length);
+
         file.write(result);
     });
 };

@@ -1,6 +1,6 @@
 const path = require('path');
 
-const IMPORT_RE = /(?:^|\n)import\s+(\w+|\{[^{}]+\})\s+from\s+'([^']+)';/g;
+const IMPORT_RE = /(?:^|\n)import\s+((?:\*\s+as\s+)?\w+|\{[^{}]+\})\s+from\s+'([^']+)';/g;
 
 function resolve(directory, dependency) {
     return (dependency[0] === '.')
