@@ -1,9 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
-function File(filename, directory) {
+function File(filename, directory, stat) {
     this.name = filename;
     this.dir = directory;
+    this.stat = stat;
     this.fullname = `${directory}/${filename}`;
 }
 File.prototype.read = function (callback) {
@@ -51,12 +52,12 @@ function scanDir(directoryName, callback) {
             for (let index = 0; index < files.length; ++index) {
                 let filename = path.join(directoryName, files[index]);
 
-                fs.stat(filename, function (error, stat) { // eslint-disable-line no-loop-func
+                fs.stat(filename, function (error, stat) {
                     if (!error) {
                         if (stat.isDirectory()) {
                             scanDir(filename, callback);
                         } else if (stat.isFile()) {
-                            callback(new File(files[index], directoryName));
+                            callback(new File(files[index], directoryName, stat));
                         }
                     }
                 });
